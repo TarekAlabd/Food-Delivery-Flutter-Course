@@ -5,8 +5,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Home Page')),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text('Foodak'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      drawer: const Drawer(
+        child: Center(
+          child: Text('Iam in the drawer!'),
+        ),
+      ),
+      body: const Center(child: Text('Home Page')),
     );
   }
 }
