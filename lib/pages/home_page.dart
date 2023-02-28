@@ -30,6 +30,60 @@ class HomePage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+            const SizedBox(height: 32.0),
+            Expanded(
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                ),
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                    ),
+                    child: Column(
+                      children: [
+                        Placeholder(
+                          fallbackHeight: 100,
+                        ),
+                        Text('Burger'),
+                        Text('5\$'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                    ),
+                    child: Column(
+                      children: [
+                        Placeholder(
+                          fallbackHeight: 100,
+                        ),
+                        Text('Burger'),
+                        Text('5\$'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                    ),
+                    child: Column(
+                      children: [
+                        Placeholder(
+                          fallbackHeight: 100,
+                        ),
+                        Text('Burger'),
+                        Text('5\$'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
