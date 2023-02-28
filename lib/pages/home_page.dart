@@ -18,7 +18,21 @@ class HomePage extends StatelessWidget {
           child: Text('Iam in the drawer!'),
         ),
       ),
-      body: const Center(child: Text('Home Page')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(24.0),
+              child: Image.asset(
+                'assets/images/classic_burger.jpg',
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
