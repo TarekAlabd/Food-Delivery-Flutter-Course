@@ -6,10 +6,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text('Foodak'),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[100],
         foregroundColor: Colors.black,
         elevation: 0,
       ),
@@ -41,44 +41,98 @@ class HomePage extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Column(
-                      children: [
-                        Placeholder(
-                          fallbackHeight: 100,
-                        ),
-                        Text('Burger'),
-                        Text('5\$'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: const [
+                          Placeholder(
+                            fallbackHeight: 100,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            'Burger',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 4.0),
+                          Text(
+                            '5 \$',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Column(
-                      children: [
-                        Placeholder(
-                          fallbackHeight: 100,
-                        ),
-                        Text('Burger'),
-                        Text('5\$'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: const [
+                          Placeholder(
+                            fallbackHeight: 100,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            'Burger',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 4.0),
+                          Text(
+                            '5 \$',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Column(
-                      children: [
-                        Placeholder(
-                          fallbackHeight: 100,
-                        ),
-                        Text('Burger'),
-                        Text('5\$'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: const [
+                          Placeholder(
+                            fallbackHeight: 100,
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            'Burger',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 4.0),
+                          Text(
+                            '5 \$',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
