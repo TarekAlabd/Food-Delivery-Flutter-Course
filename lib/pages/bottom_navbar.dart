@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/home_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {
   const BottomNavBarPage({super.key});
@@ -16,11 +17,30 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
     });
   }
 
+  List<Widget> bodyOptions = const [
+    HomePage(),
+    Center(child: Text('Favorite Page'),),
+    Center(child: Text('Account Page'),),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        title: const Text('Foodak'),
+        backgroundColor: Colors.grey[100],
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      body: bodyOptions[selectedIndex],
+      drawer: const Drawer(
+        child: Center(
+          child: Text('Iam in the drawer!'),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -35,6 +55,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
           ),
         ],
         currentIndex: selectedIndex,
+        selectedItemColor: Colors.deepOrange,
         onTap: onItemTapped,
       ),
     );
