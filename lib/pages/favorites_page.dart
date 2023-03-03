@@ -7,12 +7,15 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteFood = food.where((foodItem) => foodItem.isFavorite == true);
+    
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
-          children:
-              food.map((foodItem) => FavoriteItem(foodItem: foodItem)).toList(),
+          children: favoriteFood
+              .map((foodItem) => FavoriteItem(foodItem: foodItem))
+              .toList(),
         ),
       ),
     );
