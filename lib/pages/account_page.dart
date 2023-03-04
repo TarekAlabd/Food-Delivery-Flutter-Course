@@ -24,6 +24,28 @@ class AccountPage extends StatelessWidget {
     );
   }
 
+  Widget itemTappedTile({
+    required String title,
+    String? subtitle,
+    required IconData icon,
+  }) {
+    return ListTile(
+      title: Text(title),
+      leading: Icon(
+        icon,
+        size: 35,
+        color: Colors.deepOrange,
+      ),
+      onTap: () => debugPrint('$title clicked!'),
+      subtitle: subtitle != null ? Text(subtitle) : null,
+      trailing: const Icon(
+        Icons.chevron_right,
+        size: 25,
+        color: Colors.deepOrange,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -56,6 +78,25 @@ class AccountPage extends StatelessWidget {
               orderVoucherItem(name: 'Orders', number: 50),
               orderVoucherItem(name: 'Vouchers', number: 10),
             ],
+          ),
+          const SizedBox(height: 24.0),
+          const Divider(
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+          ),
+          itemTappedTile(title: 'Past Orders', icon: Icons.shopping_cart),
+          const Divider(
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+          ),
+          itemTappedTile(
+              title: 'Available Vouchers', icon: Icons.card_giftcard),
+          const Divider(
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
           ),
         ],
       ),
