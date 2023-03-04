@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
 
-class FavoriteItem extends StatelessWidget {
-  final FoodItem foodItem;
-  const FavoriteItem({super.key, required this.foodItem});
+class FavoriteItem extends StatefulWidget {
+  final int foodIndex;
+  const FavoriteItem({super.key, required this.foodIndex});
 
+  @override
+  State<FavoriteItem> createState() => _FavoriteItemState();
+}
+
+class _FavoriteItemState extends State<FavoriteItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,7 +21,7 @@ class FavoriteItem extends StatelessWidget {
         child: Row(
           children: [
             Image.network(
-              foodItem.imgUrl,
+              food[widget.foodIndex].imgUrl,
               height: 70,
               width: 100,
               fit: BoxFit.contain,
@@ -27,7 +32,7 @@ class FavoriteItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    foodItem.name,
+                    food[widget.foodIndex].name,
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
@@ -35,7 +40,7 @@ class FavoriteItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    '\$ ${foodItem.price}',
+                    '\$ ${food[widget.foodIndex].price}',
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -45,7 +50,17 @@ class FavoriteItem extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.favorite),
+            IconButton(
+              onPressed: () => setState(() {
+                food[widget.foodIndex] =
+                    food[widget.foodIndex].copyWith(isFavorite: false);
+              }),
+              icon: const Icon(
+                Icons.favorite,
+                color: Colors.deepOrange,
+                size: 30,
+              ),
+            ),
           ],
         ),
       ),
