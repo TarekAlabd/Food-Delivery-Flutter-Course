@@ -42,10 +42,10 @@ class _FoodGridItemState extends State<FoodGridItem> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: InkWell(
-                      onTap: () =>
-                          setState(() {
-                            isFav = !isFav;
-                          }),
+                      onTap: () => setState(() {
+                        widget.foodItem.copyWith(isFavorite: true);
+                        isFav = !isFav;
+                      }),
                       child: Icon(
                         isFav ? Icons.favorite : Icons.favorite_border,
                         color: Colors.deepOrange,
