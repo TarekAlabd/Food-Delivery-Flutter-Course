@@ -28,12 +28,8 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text('Foodak'),
-        backgroundColor: Colors.grey[100],
-        foregroundColor: Colors.black,
-        elevation: 0,
       ),
       body: bodyOptions[selectedIndex],
       drawer: const Drawer(
