@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         listTileTheme: const ListTileThemeData(
           iconColor: Colors.deepOrange,
         ),
+        fontFamily: 'OpenSans',
       ),
       home: const BottomNavBarPage(),
     );

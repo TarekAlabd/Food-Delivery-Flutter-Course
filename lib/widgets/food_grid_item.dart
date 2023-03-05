@@ -15,6 +15,8 @@ class FoodGridItem extends StatefulWidget {
 class _FoodGridItemState extends State<FoodGridItem> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -25,10 +27,11 @@ class _FoodGridItemState extends State<FoodGridItem> {
         child: Column(
           children: [
             Stack(
+              alignment: Alignment.topCenter,
               children: [
                 Image.network(
                   food[widget.foodIndex].imgUrl,
-                  height: 100,
+                  height: size.height * 0.1,
                 ),
                 Align(
                   alignment: Alignment.topRight,
