@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
               itemCount: food.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
               ),
               itemBuilder: (context, index) => FoodGridItem(
                 foodIndex: index,

@@ -15,7 +15,6 @@ class FoodGridItem extends StatefulWidget {
 class _FoodGridItemState extends State<FoodGridItem> {
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -60,19 +59,14 @@ class _FoodGridItemState extends State<FoodGridItem> {
             const SizedBox(height: 8.0),
             Text(
               food[widget.foodIndex].name,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 4.0),
             Text(
               '\$ ${food[widget.foodIndex].price}',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
-              ),
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
             ),
           ],
         ),

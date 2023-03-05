@@ -23,11 +23,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
               fit: BoxFit.cover,
               height: 350,
             ),
-            const Text(
+            Text(
               'No Favorite Items Found!',
-              style: TextStyle(
-                fontSize: 22,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ],
         ),
@@ -59,19 +57,15 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     children: [
                       Text(
                         favoriteFood[index].name,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 8.0),
                       Text(
                         '\$ ${favoriteFood[index].price}',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).primaryColor,
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ],
                   ),
