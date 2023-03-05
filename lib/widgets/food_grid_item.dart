@@ -67,7 +67,7 @@ class _FoodGridItemState extends State<FoodGridItem> {
             const SizedBox(height: 4.0),
             Text(
               '\$ ${food[widget.foodIndex].price}',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: Theme.of(context).primaryColor,
                   ),
             ),
