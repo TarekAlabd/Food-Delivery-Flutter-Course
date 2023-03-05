@@ -67,10 +67,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       const SizedBox(height: 8.0),
                       Text(
                         '\$ ${favoriteFood[index].price}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: Colors.deepOrange,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ],
@@ -86,9 +86,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       favoriteFood.remove(targetedItem);
                     });
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.favorite,
-                    color: Colors.deepOrange,
+                    color: Theme.of(context).primaryColor,
                     size: 30,
                   ),
                 ),

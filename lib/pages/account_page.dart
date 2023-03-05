@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
-  Widget orderVoucherItem({required String name, required int number}) {
+  Widget orderVoucherItem(BuildContext context, {required String name, required int number}) {
     return Column(
       children: [
         Text(
           number.toString(),
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w600,
-            color: Colors.deepOrange,
+            color: Theme.of(context).primaryColor,
           ),
         ),
         Text(
@@ -24,7 +24,9 @@ class AccountPage extends StatelessWidget {
     );
   }
 
-  Widget itemTappedTile({
+  Widget itemTappedTile(
+    BuildContext context,
+    {
     required String title,
     String? subtitle,
     required IconData icon,
@@ -34,14 +36,14 @@ class AccountPage extends StatelessWidget {
       leading: Icon(
         icon,
         size: 35,
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
       onTap: () => debugPrint('$title clicked!'),
       subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: const Icon(
+      trailing: Icon(
         Icons.chevron_right,
         size: 25,
-        color: Colors.deepOrange,
+        color: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -75,8 +77,8 @@ class AccountPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              orderVoucherItem(name: 'Orders', number: 50),
-              orderVoucherItem(name: 'Vouchers', number: 10),
+              orderVoucherItem(context, name: 'Orders', number: 50),
+              orderVoucherItem(context, name: 'Vouchers', number: 10),
             ],
           ),
           const SizedBox(height: 24.0),
@@ -85,14 +87,14 @@ class AccountPage extends StatelessWidget {
             indent: 20,
             endIndent: 20,
           ),
-          itemTappedTile(title: 'Past Orders', icon: Icons.shopping_cart),
+          itemTappedTile(context, title: 'Past Orders', icon: Icons.shopping_cart),
           const Divider(
             thickness: 2,
             indent: 20,
             endIndent: 20,
           ),
           itemTappedTile(
-              title: 'Available Vouchers', icon: Icons.card_giftcard),
+              context, title: 'Available Vouchers', icon: Icons.card_giftcard),
           const Divider(
             thickness: 2,
             indent: 20,

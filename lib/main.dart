@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Foodak - Food Delivery',
       theme: ThemeData(
-        
+        primarySwatch: Colors.deepOrange,
       ),
       home: const BottomNavBarPage(),
     );

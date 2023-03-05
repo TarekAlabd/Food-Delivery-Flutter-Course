@@ -57,7 +57,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
           ),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.deepOrange,
         onTap: onItemTapped,
       ),
     );
