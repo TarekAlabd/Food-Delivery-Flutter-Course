@@ -11,6 +11,7 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final favoriteFood =
         food.where((foodItem) => foodItem.isFavorite == true).toList();
 
@@ -21,7 +22,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             Image.asset(
               'assets/images/empty_state.png',
               fit: BoxFit.cover,
-              height: 350,
+              height: size.height * 0.3,
             ),
             Text(
               'No Favorite Items Found!',
@@ -46,8 +47,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
               children: [
                 Image.network(
                   favoriteFood[index].imgUrl,
-                  height: 70,
-                  width: 100,
+                  height: size.height * 0.1,
+                  width: size.width * 0.2,
                   fit: BoxFit.contain,
                 ),
                 const SizedBox(width: 8.0),
@@ -59,7 +60,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         favoriteFood[index].name,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      const SizedBox(height: 8.0),
+                      const SizedBox(height: 4.0),
                       Text(
                         '\$ ${favoriteFood[index].price}',
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -83,7 +84,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   icon: Icon(
                     Icons.favorite,
                     color: Theme.of(context).primaryColor,
-                    size: 30,
+                    size: size.height * 0.035,
                   ),
                 ),
               ],
