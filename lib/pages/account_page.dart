@@ -28,18 +28,36 @@ class AccountPage extends StatelessWidget {
     required IconData icon,
   }) {
     final size = MediaQuery.of(context).size;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     return ListTile(
       title: Text(title),
       leading: Icon(
         icon,
-        size: size.height * 0.03,
+        size: isLandscape ? size.height * 0.09 : size.height * 0.03,
       ),
       onTap: () => debugPrint('$title clicked!'),
       subtitle: subtitle != null ? Text(subtitle) : null,
       trailing: Icon(
         Icons.chevron_right,
-        size: size.height * 0.03,
+        size: isLandscape ? size.height * 0.09 : size.height * 0.03,
+      ),
+    );
+  }
+
+  Widget personPhoto(double width, double height) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(
+            'assets/images/tarek.jpeg',
+          ),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -47,38 +65,53 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
-    return Center(
+    final nameText = Text(
+      'Tarek Alabd',
+      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
+    );
+
+    return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            height: size.height * 0.25,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/tarek.jpeg',
-                ),
-                fit: BoxFit.cover,
-              ),
+          if (!isLandscape) ...[
+            personPhoto(size.width * 0.5, size.height * 0.25),
+            nameText,
+            const SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                orderVoucherItem(context, name: 'Orders', number: 50),
+                orderVoucherItem(context, name: 'Vouchers', number: 10),
+              ],
             ),
-          ),
-          const SizedBox(height: 16.0),
-          Text(
-            'Tarek Alabd',
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.w600,
+            const SizedBox(height: 24.0),
+          ],
+          if (isLandscape) ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    personPhoto(size.width * 0.25, size.height * 0.5),
+                    const SizedBox(height: 8.0),
+                    nameText,
+                  ],
                 ),
-          ),
-          const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              orderVoucherItem(context, name: 'Orders', number: 50),
-              orderVoucherItem(context, name: 'Vouchers', number: 10),
-            ],
-          ),
-          const SizedBox(height: 24.0),
+                Column(
+                  children: [
+                    orderVoucherItem(context, name: 'Orders', number: 50),
+                    const SizedBox(height: 16.0),
+                    orderVoucherItem(context, name: 'Vouchers', number: 10),
+                  ],
+                ),
+              ],
+            ),
+          ],
           const Divider(),
           itemTappedTile(context,
               title: 'Past Orders', icon: Icons.shopping_cart),
