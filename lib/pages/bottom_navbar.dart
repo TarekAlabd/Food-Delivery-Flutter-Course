@@ -31,7 +31,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
       appBar: AppBar(
         title: const Text('Foodak'),
       ),
-      body: bodyOptions[selectedIndex],
+      body: SafeArea(child: bodyOptions[selectedIndex]),
       drawer: const Drawer(
         child: Center(
           child: Text('Iam in the drawer!'),
