@@ -30,7 +30,7 @@ List<FoodItem> food = [
   FoodItem(
     name: 'Beef Burger',
     imgUrl:
-        'https://www.freepnglogos.com/uploads/burger-png/download-hamburger-burger-png-image-png-image-pngimg-15.png',
+        'https://cdn.shopify.com/s/files/1/0681/8716/0850/products/002_4.jpg',
     price: 8.5,
   ),
   FoodItem(
