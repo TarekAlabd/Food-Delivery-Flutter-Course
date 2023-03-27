@@ -41,7 +41,7 @@ List<FoodItem> food = [
   FoodItem(
     name: 'Cheese Burger',
     imgUrl:
-        'https://www.pngmart.com/files/16/Cheese-Burger-PNG-Transparent-Image.png',
+        'https://freepngimg.com/thumb/burger/158711-cheese-burger-png-file-hd.png',
     price: 8,
   ),
   FoodItem(
