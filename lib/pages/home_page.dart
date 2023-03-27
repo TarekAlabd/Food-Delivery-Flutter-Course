@@ -30,10 +30,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * 0.04),
-            if (Platform.isIOS)
-              Text('This is an iOS app!'),
-            if (Platform.isAndroid)
-              Text('This is an android app!'),
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

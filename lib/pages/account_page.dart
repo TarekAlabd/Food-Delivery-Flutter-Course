@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -31,19 +34,35 @@ class AccountPage extends StatelessWidget {
     final isLandscape =
         MediaQuery.of(context).orientation == Orientation.landscape;
 
-    return ListTile(
-      title: Text(title),
-      leading: Icon(
-        icon,
-        size: isLandscape ? size.height * 0.09 : size.height * 0.03,
-      ),
-      onTap: () => debugPrint('$title clicked!'),
-      subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: Icon(
-        Icons.chevron_right,
-        size: isLandscape ? size.height * 0.09 : size.height * 0.03,
-      ),
-    );
+    return Platform.isAndroid
+        ? ListTile(
+            title: Text(title),
+            leading: Icon(
+              icon,
+              size: isLandscape ? size.height * 0.09 : size.height * 0.03,
+            ),
+            onTap: () => debugPrint('$title clicked!'),
+            subtitle: subtitle != null ? Text(subtitle) : null,
+            trailing: Icon(
+              Icons.chevron_right,
+              size: isLandscape ? size.height * 0.09 : size.height * 0.03,
+            ),
+          )
+        : CupertinoListTile(
+            title: Text(title),
+            leading: Icon(
+              icon,
+              color: Colors.deepOrange,
+              size: isLandscape ? size.height * 0.09 : size.height * 0.03,
+            ),
+            onTap: () => debugPrint('$title clicked!'),
+            subtitle: subtitle != null ? Text(subtitle) : null,
+            trailing: Icon(
+              CupertinoIcons.chevron_right,
+              color: Colors.deepOrange,
+              size: isLandscape ? size.height * 0.09 : size.height * 0.03,
+            ),
+          );
   }
 
   Widget personPhoto(double width, double height) {
