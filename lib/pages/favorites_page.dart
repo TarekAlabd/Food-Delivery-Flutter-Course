@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/widgets/adaptive_fav_button.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
@@ -12,38 +13,6 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-  Widget adaptiveFavButton(BuildContext context, VoidCallback onPressed) {
-    final size = MediaQuery.of(context).size;
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
-    if (Platform.isIOS) {
-      return CupertinoButton(
-        onPressed: onPressed,
-        child: Row(
-          children: const [
-            Icon(CupertinoIcons.heart_fill),
-            SizedBox(width: 6.0),
-            Text('Favorited'),
-          ],
-        ),
-      );
-    } else {
-      return TextButton.icon(
-        icon: Icon(
-          Icons.favorite,
-          color: Theme.of(context).primaryColor,
-          size: isLandscape ? size.height * 0.08 : size.height * 0.035,
-        ),
-        onPressed: onPressed,
-        label: Text(
-          'Favorited',
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).primaryColor,
-              ),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,9 +97,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     ),
                   ),
                 if (isLandscape)
-                  adaptiveFavButton(
-                    context,
-                    () {
+                  AdaptiveFavButton(
+                    title: 'Favorited',
+                    onPressed: () {
                       final targetedItem = favoriteFood[index];
                       int targetedIndex = food.indexOf(targetedItem);
                       setState(() {
