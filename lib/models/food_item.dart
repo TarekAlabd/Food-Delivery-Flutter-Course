@@ -4,7 +4,7 @@ class FoodItem {
   final double price;
   final bool isFavorite;
 
-  FoodItem({
+  const FoodItem({
     required this.name,
     required this.imgUrl,
     required this.price,
@@ -41,7 +41,7 @@ List<FoodItem> food = [
   FoodItem(
     name: 'Cheese Burger',
     imgUrl:
-        'https://freepngimg.com/thumb/burger/158711-cheese-burger-png-file-hd.png',
+        'https://www.pngarts.com/files/3/Chicken-Burger-PNG-Photo.png',
     price: 8,
   ),
   FoodItem(
