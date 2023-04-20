@@ -39,8 +39,13 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: size.height * 0.02,
                 crossAxisSpacing: size.height * 0.02,
               ),
-              itemBuilder: (context, index) => FoodGridItem(
-                foodIndex: index,
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  debugPrint(food[index].name);
+                },
+                child: FoodGridItem(
+                  foodIndex: index,
+                ),
               ),
             ),
           ],

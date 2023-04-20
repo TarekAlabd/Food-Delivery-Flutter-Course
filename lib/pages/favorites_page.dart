@@ -13,7 +13,6 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -44,72 +43,80 @@ class _FavoritesPageState extends State<FavoritesPage> {
       padding: const EdgeInsets.all(16.0),
       child: ListView.builder(
         itemCount: favoriteFood.length,
-        itemBuilder: (context, index) => Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Image.network(
-                  favoriteFood[index].imgUrl,
-                  height: isLandscape ? size.height * 0.2 : size.height * 0.09,
-                  width: size.width * 0.2,
-                  fit: BoxFit.contain,
-                ),
-                const SizedBox(width: 8.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        favoriteFood[index].name,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 4.0),
-                      Text(
-                        '\$ ${favoriteFood[index].price}',
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ],
+        itemBuilder: (context, index) => InkWell(
+          onTap: () {
+            debugPrint(favoriteFood[index].name);
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Image.network(
+                    favoriteFood[index].imgUrl,
+                    height:
+                        isLandscape ? size.height * 0.2 : size.height * 0.09,
+                    width: size.width * 0.2,
+                    fit: BoxFit.contain,
                   ),
-                ),
-                if (!isLandscape)
-                  IconButton(
-                    onPressed: () {
-                      final targetedItem = favoriteFood[index];
-                      int targetedIndex = food.indexOf(targetedItem);
-                      setState(() {
-                        food[targetedIndex] =
-                            food[targetedIndex].copyWith(isFavorite: false);
-                        favoriteFood.remove(targetedItem);
-                      });
-                    },
-                    icon: Icon(
-                      Icons.favorite,
-                      color: Theme.of(context).primaryColor,
-                      size:
-                          isLandscape ? size.height * 0.1 : size.height * 0.035,
+                  const SizedBox(width: 8.0),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          favoriteFood[index].name,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 4.0),
+                        Text(
+                          '\$ ${favoriteFood[index].price}',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ],
                     ),
                   ),
-                if (isLandscape)
-                  AdaptiveFavButton(
-                    title: 'Favorited',
-                    onPressed: () {
-                      final targetedItem = favoriteFood[index];
-                      int targetedIndex = food.indexOf(targetedItem);
-                      setState(() {
-                        food[targetedIndex] =
-                            food[targetedIndex].copyWith(isFavorite: false);
-                        favoriteFood.remove(targetedItem);
-                      });
-                    },
-                  ),
-              ],
+                  if (!isLandscape)
+                    IconButton(
+                      onPressed: () {
+                        final targetedItem = favoriteFood[index];
+                        int targetedIndex = food.indexOf(targetedItem);
+                        setState(() {
+                          food[targetedIndex] =
+                              food[targetedIndex].copyWith(isFavorite: false);
+                          favoriteFood.remove(targetedItem);
+                        });
+                      },
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Theme.of(context).primaryColor,
+                        size: isLandscape
+                            ? size.height * 0.1
+                            : size.height * 0.035,
+                      ),
+                    ),
+                  if (isLandscape)
+                    AdaptiveFavButton(
+                      title: 'Favorited',
+                      onPressed: () {
+                        final targetedItem = favoriteFood[index];
+                        int targetedIndex = food.indexOf(targetedItem);
+                        setState(() {
+                          food[targetedIndex] =
+                              food[targetedIndex].copyWith(isFavorite: false);
+                          favoriteFood.remove(targetedItem);
+                        });
+                      },
+                    ),
+                ],
+              ),
             ),
           ),
         ),
