@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // Other Packages
 // Internal (Files)
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 import 'package:food_delivery/widgets/food_grid_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,7 +42,7 @@ class HomePage extends StatelessWidget {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  debugPrint(food[index].name);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => FoodDetailsPage(),),);
                 },
                 child: FoodGridItem(
                   foodIndex: index,

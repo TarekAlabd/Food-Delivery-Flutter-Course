@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/pages/food_details_page.dart';
 import 'package:food_delivery/widgets/adaptive_fav_button.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         itemCount: favoriteFood.length,
         itemBuilder: (context, index) => InkWell(
           onTap: () {
-            debugPrint(favoriteFood[index].name);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FoodDetailsPage(),),);
           },
           child: Card(
             shape: RoundedRectangleBorder(
