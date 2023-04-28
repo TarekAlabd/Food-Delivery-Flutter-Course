@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/widgets/food_details/food_item_counter.dart';
 import 'package:food_delivery/widgets/food_details/property_item.dart';
 import 'package:food_delivery/widgets/food_details/top_banner.dart';
 
@@ -28,18 +29,33 @@ class FoodDetailsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    foodItem.name,
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                  const SizedBox(height: 6.0),
-                  Text(
-                    'Buffalo Burger',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.grey,
-                        ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            foodItem.name,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          const SizedBox(height: 6.0),
+                          Text(
+                            'Buffalo Burger',
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.grey,
+                                    ),
+                          ),
+                        ],
+                      ),
+                      FoodItemCounter(),
+                    ],
                   ),
                   const SizedBox(height: 32.0),
                   IntrinsicHeight(
