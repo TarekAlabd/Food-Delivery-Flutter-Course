@@ -4,8 +4,8 @@ import 'package:food_delivery/widgets/custom_back_button.dart';
 import 'package:food_delivery/widgets/favorite_button.dart';
 
 class TopBanner extends StatelessWidget {
-  final FoodItem foodItem;
-  const TopBanner({super.key, required this.foodItem});
+  final int foodIndex;
+  const TopBanner({super.key, required this.foodIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class TopBanner extends StatelessWidget {
                       height: size.height * 0.04,
                     ),
                     FavoriteButton(
-                      foodIndex: 1,
+                      foodIndex: foodIndex,
                       width: size.width * 0.09,
                       height: size.height * 0.04,
                     ),
@@ -41,7 +41,7 @@ class TopBanner extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Image.network(
-                    foodItem.imgUrl,
+                    food[foodIndex].imgUrl,
                     fit: BoxFit.contain,
                     height: size.height * 0.3,
                     width: size.width,

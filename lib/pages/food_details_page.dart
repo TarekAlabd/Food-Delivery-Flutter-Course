@@ -5,8 +5,8 @@ import 'package:food_delivery/widgets/food_details/property_item.dart';
 import 'package:food_delivery/widgets/food_details/top_banner.dart';
 
 class FoodDetailsPage extends StatelessWidget {
-  final FoodItem foodItem;
-  const FoodDetailsPage({super.key, required this.foodItem});
+  final int foodIndex;
+  const FoodDetailsPage({super.key, required this.foodIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class FoodDetailsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TopBanner(foodItem: foodItem),
+            TopBanner(foodIndex: foodIndex),
             Padding(
               padding: const EdgeInsets.only(
                 left: 16.0,
@@ -36,7 +36,7 @@ class FoodDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            foodItem.name,
+                            food[foodIndex].name,
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineSmall!
@@ -92,7 +92,7 @@ class FoodDetailsPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '\$ ${foodItem.price}',
+                        '\$ ${food[foodIndex].price}',
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
