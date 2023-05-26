@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
 import 'package:food_delivery/pages/food_details_page.dart';
+import 'package:food_delivery/ui_models/food_details_args.dart';
 import 'package:food_delivery/widgets/adaptive_fav_button.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -46,15 +47,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
         itemCount: favoriteFood.length,
         itemBuilder: (context, index) => InkWell(
           onTap: () {
-            Navigator.of(context).push<String>(
-              MaterialPageRoute(
-                builder: (context) {
-                  int targetedIndex = food.indexOf(favoriteFood[index]);
-                  return FoodDetailsPage(
-                    foodIndex: targetedIndex,
-                  );
-                },
-              ),
+            int targetedIndex = food.indexOf(favoriteFood[index]);
+            Navigator.of(context).pushNamed(
+              '/food-details',
+              arguments: FoodDetailsArgs(foodIndex: targetedIndex),
             ).then((value) {
               setState(() {});
               debugPrint("The value returned in favorites page: $value");

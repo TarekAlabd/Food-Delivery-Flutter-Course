@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item.dart';
+import 'package:food_delivery/ui_models/food_details_args.dart';
 import 'package:food_delivery/widgets/custom_back_button.dart';
 import 'package:food_delivery/widgets/favorite_button.dart';
 import 'package:food_delivery/widgets/food_details/food_item_counter.dart';
 import 'package:food_delivery/widgets/food_details/property_item.dart';
 
 class FoodDetailsPage extends StatelessWidget {
-  final int foodIndex;
-  const FoodDetailsPage({super.key, required this.foodIndex});
+  const FoodDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final FoodDetailsArgs foodArgs =
+        ModalRoute.of(context)!.settings.arguments as FoodDetailsArgs;
+    final foodIndex = foodArgs.foodIndex;
 
     return Scaffold(
       // appBar: AppBar(),
@@ -27,7 +30,8 @@ class FoodDetailsPage extends StatelessWidget {
                     leading: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomBackButton(
-                        onTap: () => Navigator.of(context).pop<String>(food[foodIndex].name),
+                        onTap: () => Navigator.of(context)
+                            .pop<String>(food[foodIndex].name),
                         width: size.width * 0.09,
                         height: size.height * 0.04,
                       ),

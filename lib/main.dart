@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const BottomNavBarPage(),
-        '/food-details': (context) => FoodDetailsPage(foodIndex: 1),
+        '/food-details': (context) => const FoodDetailsPage(),
       },
     );
   }
