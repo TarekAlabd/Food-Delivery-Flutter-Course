@@ -6,10 +6,13 @@ import 'package:food_delivery/widgets/custom_secondary_button.dart';
 class CustomBackButton extends StatelessWidget {
   final double width;
   final double height;
+  final VoidCallback onTap;
+
   const CustomBackButton({
     super.key,
     required this.height,
     required this.width,
+    required this.onTap,
   });
 
   @override
@@ -17,7 +20,7 @@ class CustomBackButton extends StatelessWidget {
     return CustomSecondaryButton(
       width: width,
       height: height,
-      onTap: () => Navigator.of(context).pop(),
+      onTap: onTap,
       iconData:
           Platform.isIOS ? Icons.arrow_back_ios_new_rounded : Icons.arrow_back,
     );

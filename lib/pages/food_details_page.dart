@@ -27,6 +27,7 @@ class FoodDetailsPage extends StatelessWidget {
                     leading: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomBackButton(
+                        onTap: () => Navigator.of(context).pop<String>(food[foodIndex].name),
                         width: size.width * 0.09,
                         height: size.height * 0.04,
                       ),
