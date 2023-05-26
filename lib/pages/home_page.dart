@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.of(context)
                       .pushNamed(
-                    '/food-details',
+                    FoodDetailsPage.routeName,
                     arguments: FoodDetailsArgs(foodIndex: index),
                   )
                       .then((value) {

@@ -49,7 +49,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
           onTap: () {
             int targetedIndex = food.indexOf(favoriteFood[index]);
             Navigator.of(context).pushNamed(
-              '/food-details',
+              FoodDetailsPage.routeName,
               arguments: FoodDetailsArgs(foodIndex: targetedIndex),
             ).then((value) {
               setState(() {});

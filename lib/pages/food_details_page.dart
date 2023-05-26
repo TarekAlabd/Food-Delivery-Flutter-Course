@@ -9,6 +9,8 @@ import 'package:food_delivery/widgets/food_details/property_item.dart';
 class FoodDetailsPage extends StatelessWidget {
   const FoodDetailsPage({super.key});
 
+  static const String routeName = '/food-details';
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
