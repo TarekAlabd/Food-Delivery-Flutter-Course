@@ -4,9 +4,12 @@ import 'package:food_delivery/widgets/favorite_button.dart';
 
 class FoodGridItem extends StatelessWidget {
   final int foodIndex;
+  final List<FoodItem> filteredFood;
+
   const FoodGridItem({
     super.key,
     required this.foodIndex,
+    required this.filteredFood,
   });
 
   @override
@@ -27,7 +30,7 @@ class FoodGridItem extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: [
                   Image.network(
-                    food[foodIndex].imgUrl,
+                    filteredFood[foodIndex].imgUrl,
                     height: constraints.maxHeight * 0.55,
                   ),
                   Align(
@@ -45,7 +48,7 @@ class FoodGridItem extends StatelessWidget {
                 height: constraints.maxHeight * 0.2,
                 child: FittedBox(
                   child: Text(
-                    food[foodIndex].name,
+                    filteredFood[foodIndex].name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
@@ -55,7 +58,7 @@ class FoodGridItem extends StatelessWidget {
                 height: constraints.maxHeight * 0.17,
                 child: FittedBox(
                   child: Text(
-                    '\$ ${food[foodIndex].price}',
+                    '\$ ${filteredFood[foodIndex].price}',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).primaryColor,
                         ),

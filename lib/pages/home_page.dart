@@ -19,6 +19,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? categoryChosenId;
+  late List<FoodItem> filteredFood;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredFood = food;
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -46,23 +55,43 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsetsDirectional.only(end: 16.0),
-                  child: Container(
-                    width: size.width * 0.2,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Image.asset(categories[index].imgPath),
-                          const SizedBox(height: 8.0),
-                          Text(
-                            categories[index].title,
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                        ],
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        categoryChosenId = categories[index].id;
+                      });
+                      filteredFood = filteredFood
+                          .where((item) => item.categoryId == categoryChosenId)
+                          .toList();
+                    },
+                    child: Container(
+                      width: size.width * 0.2,
+                      decoration: BoxDecoration(
+                        color: categoryChosenId == categories[index].id
+                            ? Theme.of(context).primaryColor
+                            : Colors.white,
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Image.asset(categories[index].imgPath),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              categories[index].title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color:
+                                        categoryChosenId == categories[index].id
+                                            ? Colors.white
+                                            : null,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -73,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: food.length,
+              itemCount: filteredFood.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isLandscape ? 4 : 2,
                 mainAxisSpacing: size.height * 0.02,
@@ -93,6 +122,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: FoodGridItem(
                   foodIndex: index,
+                  filteredFood: filteredFood,
                 ),
               ),
             ),
