@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String? categoryChosenId;
+  bool enableCategoryFilter = false;
   late List<FoodItem> filteredFood;
 
   @override
@@ -58,11 +59,21 @@ class _HomePageState extends State<HomePage> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        categoryChosenId = categories[index].id;
+                        if (categoryChosenId == categories[index].id || !enableCategoryFilter) {
+                          enableCategoryFilter = !enableCategoryFilter;
+                        }
+
+                        if (enableCategoryFilter) {
+                          categoryChosenId = categories[index].id;
+                          filteredFood = food
+                              .where(
+                                  (item) => item.categoryId == categoryChosenId)
+                              .toList();
+                        } else {
+                          categoryChosenId = null;
+                          filteredFood = food;
+                        }
                       });
-                      filteredFood = food
-                          .where((item) => item.categoryId == categoryChosenId)
-                          .toList();
                     },
                     child: Container(
                       width: size.width * 0.2,
