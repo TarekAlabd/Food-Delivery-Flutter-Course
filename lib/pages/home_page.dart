@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         categoryChosenId = categories[index].id;
                       });
-                      filteredFood = filteredFood
+                      filteredFood = food
                           .where((item) => item.categoryId == categoryChosenId)
                           .toList();
                     },
@@ -110,13 +110,18 @@ class _HomePageState extends State<HomePage> {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
+                  final targetedFoodItem = food
+                      .firstWhere((item) => item.id == filteredFood[index].id);
+                  final targetedIndex = food.indexOf(targetedFoodItem);
                   Navigator.of(context)
                       .pushNamed(
                     FoodDetailsPage.routeName,
-                    arguments: FoodDetailsArgs(foodIndex: index),
+                    arguments: FoodDetailsArgs(foodIndex: targetedIndex),
                   )
                       .then((value) {
                     setState(() {});
+                    filteredFood = food;
+                    categoryChosenId = null;
                     debugPrint("The value returned in home: $value");
                   });
                 },
